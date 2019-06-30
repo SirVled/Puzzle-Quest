@@ -1,0 +1,530 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"      
+        xmlns:gif="http://wpfanimatedgif.codeplex.com" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Puzzle_Quest__AnimeEdition_.MainWindow"
+        Title="MainWindow" Height="768" Width="1024" Loaded="Select_Items" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="0.40">
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="br" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+        </Style>
+    </Window.Resources>
+    <Canvas x:Name="MainW" Margin="0,0,-8,-1">
+
+        <Grid x:Name="GamePane" Background="#99080808" Height="552" VerticalAlignment="Top" HorizontalAlignment="Left" Width="578" Canvas.Left="220" Canvas.Top="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="422,642,0,0" VerticalAlignment="Top" Width="139" Click="Button_Click" FontFamily="Aharoni" FontSize="36" Background="#FFFF4040" Foreground="Black" BorderBrush="Black"/>
+        <Grid RenderTransformOrigin="0.5,0.5" Canvas.Left="8" Canvas.Top="264" Width="178">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <ProgressBar x:Name="greenP" Margin="24,3,0,0" Value="20" Maximum="31" BorderThickness="1" Foreground="#FF00FF2F" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="152" Minimum="1"/>
+            <ProgressBar x:Name="redP" Margin="24,43,0,0" Foreground="Red" Value="11" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="152" Maximum="31" Minimum="1"/>
+            <ProgressBar x:Name="yellowP" Margin="24,83,0,0" Maximum="31" Foreground="#FFFFF628" Value="30" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="152" Minimum="1"/>
+            <ProgressBar x:Name="blueP" Margin="24,123,0,0" Maximum="31" Foreground="#FF3E3EFF" Value="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="152" Minimum="1"/>
+            <Label x:Name="greenL" Content="0" HorizontalAlignment="Left"  Margin="1,1,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Background="#33FFFFFF">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Label x:Name="redL" Content="0" HorizontalAlignment="Left" Margin="1,40,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Background="#33FFFEFE">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Label x:Name="yellowL" Content="0" HorizontalAlignment="Left" Margin="1,81,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Background="#33FFFFFF">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Label x:Name="blueL" Content="0" HorizontalAlignment="Left" Margin="1,119,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Background="#33FFFFFF">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+        </Grid>
+        
+        <Grid x:Name="HerExpAndGold" HorizontalAlignment="Left" Height="43" Margin="10,200,0,0" VerticalAlignment="Top" Width="171" Background="#4CFFFFFF">
+            <StackPanel Margin="97,7,0,3" Orientation="Horizontal">
+                <Label x:Name="goldL" HorizontalAlignment="Left" VerticalAlignment="Top"  Height="26" Content="500" FontSize="14"/>
+                <Label Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,0" Height="21" Width="23" RenderTransformOrigin="2.867,-1.333">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/Gold.png"/>
+                    </Label.Background>
+                </Label>
+            </StackPanel>
+            <StackPanel Margin="0,7,91,5" Orientation="Horizontal">
+                <Label x:Name="expL" Content="1001" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="14"/>
+                <Label Content="" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Height="21" Width="23" RenderTransformOrigin="2.867,-1.333">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/Exp.png"/>
+                    </Label.Background>
+                </Label>          
+            </StackPanel>
+        </Grid>
+        
+        
+        <Grid x:Name="HpEnemy" HorizontalAlignment="Left" Height="92" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.438,0.466" Background="#4CFFFFFF" Canvas.Left="812" Canvas.Top="72">
+            <ProgressBar x:Name="enemyP" HorizontalAlignment="Left" Height="20" Margin="30,72,0,0" VerticalAlignment="Top" Width="125" Background="#FFE6E6E6" Foreground="Red" Maximum="110" Value="110"/>
+            <Label x:Name="enemyL" Content="110" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="0.553,0.017" BorderBrush="Black" Background="{x:Null}" BorderThickness="1,1,1,0" Margin="75,37,0,0" FontSize="18" />
+            <Grid x:Name="BuffsEnemy" HorizontalAlignment="Left" Height="28" Margin="10,19,0,0" VerticalAlignment="Top" Width="158" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Grid>
+        <Grid x:Name="EnemyMana" RenderTransformOrigin="0.5,0.5" Background="#00000000" Canvas.Left="798" Canvas.Top="262" Width="184">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <ProgressBar x:Name="greenPE" Margin="29,9,0,0" Value="7" Maximum="31" BorderThickness="1" Foreground="#FF00FF2F" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="152" Minimum="1"/>
+            <ProgressBar x:Name="redPE" Margin="29,49,0,0" Foreground="Red" Value="2" Maximum="31" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="152" Minimum="1"/>
+            <ProgressBar x:Name="yellowPE" Margin="29,89,0,0" Maximum="31" Foreground="#FFFFF628" Value="30" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="152" Minimum="1"/>
+            <ProgressBar x:Name="bluePE" Margin="29,129,0,0" Maximum="30" Foreground="#FF3E3EFF" Value="18" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="152" Minimum="1"/>
+            <Label x:Name="greenLE" Content="0" HorizontalAlignment="Left"  Margin="5,6,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Background="#33FFFFFF">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Label x:Name="redLE" Content="0" HorizontalAlignment="Left" Margin="5,46,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Background="#33FFFFFF">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Label x:Name="yellowLE" Content="0" HorizontalAlignment="Left" Margin="5,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Background="#33FFFFFF">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Label x:Name="blueLE" Content="0" HorizontalAlignment="Left" Margin="5,125,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Background="#33FFFFFF">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+        </Grid>
+        <Grid x:Name="EnemyExpAndGold" HorizontalAlignment="Left" Height="43" VerticalAlignment="Top" Width="170" Background="#4CFFFFFF" Canvas.Left="812" Canvas.Top="190">
+            <Label x:Name="expLE" Content="1001" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="66" FontSize="14"/>
+            <Label x:Name="goldLE" HorizontalAlignment="Left" Margin="91,7,0,0" VerticalAlignment="Top" Width="80" Height="26" Content="500" FontSize="14"/>
+        </Grid>
+       
+        <Label Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Width="23" RenderTransformOrigin="2.867,-1.333" Canvas.Left="856" Canvas.Top="200">
+            <Label.Background>
+                <ImageBrush ImageSource="Resources/Exp.png"/>
+            </Label.Background>
+        </Label>
+        <Label Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Width="23" RenderTransformOrigin="2.867,-1.333" Canvas.Left="935" Canvas.Top="200">
+            <Label.Background>
+                <ImageBrush ImageSource="Resources/Gold.png"/>
+            </Label.Background>
+        </Label>
+        
+        <Grid x:Name="HpHero" HorizontalAlignment="Left" Height="92" Margin="10,72,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.438,0.466" Background="#4CFFFFFF">
+            <ProgressBar x:Name="heroP" HorizontalAlignment="Left" Height="20" Margin="22,72,0,0" VerticalAlignment="Top" Width="124" Background="#FFE6E6E6" Foreground="Red" Maximum="80" Value="80"/>
+            <Label x:Name="heroL" Content="110" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="66,37,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.553,0.017" BorderBrush="Black" Background="{x:Null}" BorderThickness="1,1,1,0" FontSize="18"/>
+            <Grid x:Name="BuffsHero" HorizontalAlignment="Left" Height="25" Margin="10,18,0,0" VerticalAlignment="Top" Width="158">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Grid>
+       
+        <Label x:Name="TurnHer" Content="" HorizontalAlignment="Left" Margin="76,10,0,0" VerticalAlignment="Top" Height="47" Width="59" Background="#FF2EFF00"/>
+        <Label x:Name="TurnEnemy" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="47" Width="60" Background="Red" Canvas.Left="870" Canvas.Top="10"/>
+       
+        <Grid HorizontalAlignment="Left" Height="274" Margin="10,440,0,0" VerticalAlignment="Top" Width="193" Background="#66D6DCFF">
+
+            <Label x:Name="NameSpell2" Content="Магический щит" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Height="44" Width="163"  VerticalContentAlignment="Bottom" FontFamily="Times New Roman" FontSize="15" Foreground="#FF0A0047" Background="#96FFFFFF" BorderBrush="Black"/>
+            <Label x:Name="NameSpell3" Content="Спешка" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Height="45" Width="163"  VerticalContentAlignment="Bottom" FontFamily="Times New Roman" FontSize="15" Foreground="#FF0A0047" Background="#96FFFFFF" BorderBrush="Black"/>
+            <Label x:Name="NameSpell4" Content="Магический квадрат" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" Height="45" Width="163"  VerticalContentAlignment="Bottom" FontFamily="Times New Roman" FontSize="15" Foreground="#FF0A0047" Background="#96FFFFFF" BorderBrush="Black"/>
+            <Label x:Name="NameSpell1" Content="Огненный шар" Margin="11,10,0,0" VerticalAlignment="Top" Height="45"  VerticalContentAlignment="Bottom" FontFamily="Times New Roman" FontSize="15" Foreground="#FF0A0047" Background="#96FFFFFF" BorderBrush="Black" HorizontalAlignment="Left" Width="163"/>
+            <Grid x:Name="Spell1Grid" HorizontalAlignment="Left" Height="24" Margin="26,11,0,0" VerticalAlignment="Top" Width="147">
+                <Label x:Name="BlueManaLab" Content="" HorizontalAlignment="Left" Margin="121,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/BlueMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="BlueManaText" Content="10" HorizontalAlignment="Left" Margin="102,0,0,0" VerticalAlignment="Top" Width="23" BorderBrush="Black" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="YellowManaLab" Content="" HorizontalAlignment="Left" Margin="87,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/YellowMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="YellowManaText" Content="10" HorizontalAlignment="Left" Margin="68,0,0,0" VerticalAlignment="Top" Width="24" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="RedManaLab" Content="" HorizontalAlignment="Left" Margin="54,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/RedMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="RedManaText" Content="4" HorizontalAlignment="Left" Margin="34,0,0,0" VerticalAlignment="Top" Width="26" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="GreenManaLab" Content="" HorizontalAlignment="Left" Margin="20,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575" >
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/GreenMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="GreenManaText" Content="10" VerticalAlignment="Top" Foreground="Red" Margin="0,-1,124,0" HorizontalContentAlignment="Center"/>
+            </Grid>
+            <Label x:Name="NameSpell5" Content="Магический квадрат" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Height="45" Width="163"  VerticalContentAlignment="Bottom" FontFamily="Times New Roman" FontSize="15" Foreground="#FF0A0047" Background="#96FFFFFF" BorderBrush="Black"/>
+            <Grid x:Name="Spell2Grid" HorizontalAlignment="Left" Height="24" Margin="26,62,0,0" VerticalAlignment="Top" Width="147">
+                <Label x:Name="BlueManaLab1" Content="" HorizontalAlignment="Left" Margin="121,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/BlueMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="BlueManaText1" Content="10" HorizontalAlignment="Left" Margin="102,0,0,0" VerticalAlignment="Top" Width="23" BorderBrush="Black" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="YellowManaLab1" Content="" HorizontalAlignment="Left" Margin="87,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/YellowMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="YellowManaText1" Content="10" HorizontalAlignment="Left" Margin="68,0,0,0" VerticalAlignment="Top" Width="24" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="RedManaLab1" Content="" HorizontalAlignment="Left" Margin="54,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/RedMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="RedManaText1" Content="4" HorizontalAlignment="Left" Margin="34,0,0,0" VerticalAlignment="Top" Width="26" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="GreenManaLab1" Content="" HorizontalAlignment="Left" Margin="20,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575" >
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/GreenMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="GreenManaText1" Content="10" VerticalAlignment="Top" Foreground="Red" Margin="0,-1,124,0" HorizontalContentAlignment="Center"/>
+            </Grid>
+            <Grid x:Name="Spell3Grid" HorizontalAlignment="Left" Height="24" Margin="26,112,0,0" VerticalAlignment="Top" Width="147">
+                <Label x:Name="BlueManaLab2" Content="" HorizontalAlignment="Left" Margin="121,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/BlueMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="BlueManaText2" Content="10" HorizontalAlignment="Left" Margin="102,0,0,0" VerticalAlignment="Top" Width="23" BorderBrush="Black" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="YellowManaLab2" Content="" HorizontalAlignment="Left" Margin="87,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/YellowMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="YellowManaText2" Content="10" HorizontalAlignment="Left" Margin="68,0,0,0" VerticalAlignment="Top" Width="24" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="RedManaLab2" Content="" HorizontalAlignment="Left" Margin="54,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/RedMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="RedManaText2" Content="4" HorizontalAlignment="Left" Margin="34,0,0,0" VerticalAlignment="Top" Width="26" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="GreenManaLab2" Content="" HorizontalAlignment="Left" Margin="20,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575" >
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/GreenMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="GreenManaText2" Content="10" VerticalAlignment="Top" Foreground="Red" Margin="0,-1,124,0" HorizontalContentAlignment="Center"/>
+            </Grid>
+            <Grid x:Name="Spell4Grid" HorizontalAlignment="Left" Height="24" Margin="27,162,0,0" VerticalAlignment="Top" Width="147">
+                <Label x:Name="BlueManaLab3" Content="" HorizontalAlignment="Left" Margin="121,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/BlueMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="BlueManaText3" Content="10" HorizontalAlignment="Left" Margin="102,0,0,0" VerticalAlignment="Top" Width="23" BorderBrush="Black" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="YellowManaLab3" Content="" HorizontalAlignment="Left" Margin="87,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/YellowMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="YellowManaText3" Content="10" HorizontalAlignment="Left" Margin="68,0,0,0" VerticalAlignment="Top" Width="24" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="RedManaLab3" Content="" HorizontalAlignment="Left" Margin="54,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/RedMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="RedManaText3" Content="4" HorizontalAlignment="Left" Margin="34,0,0,0" VerticalAlignment="Top" Width="26" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="GreenManaLab3" Content="" HorizontalAlignment="Left" Margin="20,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575" >
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/GreenMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="GreenManaText3" Content="10" VerticalAlignment="Top" Foreground="Red" Margin="0,-1,124,0" HorizontalContentAlignment="Center"/>
+            </Grid>
+            <Grid x:Name="Spell5Grid" HorizontalAlignment="Left" Height="24" Margin="26,213,0,0" VerticalAlignment="Top" Width="147">
+                <Label x:Name="BlueManaLab4" Content="" HorizontalAlignment="Left" Margin="121,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/BlueMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="BlueManaText4" Content="10" HorizontalAlignment="Left" Margin="102,0,0,0" VerticalAlignment="Top" Width="23" BorderBrush="Black" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="YellowManaLab4" Content="" HorizontalAlignment="Left" Margin="87,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/YellowMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="YellowManaText4" Content="10" HorizontalAlignment="Left" Margin="68,0,0,0" VerticalAlignment="Top" Width="24" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="RedManaLab4" Content="" HorizontalAlignment="Left" Margin="54,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/RedMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="RedManaText4" Content="4" HorizontalAlignment="Left" Margin="34,0,0,0" VerticalAlignment="Top" Width="26" Foreground="Red" HorizontalContentAlignment="Center"/>
+                <Label x:Name="GreenManaLab4" Content="" HorizontalAlignment="Left" Margin="20,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575" >
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/GreenMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="GreenManaText4" Content="10" VerticalAlignment="Top" Foreground="Red" Margin="0,-1,124,0" HorizontalContentAlignment="Center"/>
+            </Grid>
+            <Button x:Name="ClkSpell5" Content="" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Height="46" Width="163" Background="#00DDDDDD" Click="ClkSpell5_Click"/>
+            <Button x:Name="ClkSpell4" Content="" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" Height="46" Width="163" Background="#00DDDDDD" Click="ClkSpell4_Click"/>
+            <Button x:Name="ClkSpell3" Content="" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Height="46" Width="163" Background="#00DDDDDD" Click="ClkSpell3_Click"/>
+            <Button x:Name="ClkSpell2" Content="" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Height="46" Width="163" Background="#00DDDDDD" Click="ClkSpell2_Click"/>
+            <Button x:Name="ClkSpell1" Content="" HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top" Height="46" Width="163" Background="#00DDDDDD" Click="ClkSpell1_Click"/>
+            <Label x:Name="Lock3" Content="" HorizontalAlignment="Left" Margin="78,169,0,0" VerticalAlignment="Top" Height="32" Width="38" d:IsHidden="True"/>
+            <Label x:Name="Lock2" Content="" HorizontalAlignment="Left" Margin="78,119,0,0" VerticalAlignment="Top" Height="32" Width="38" d:IsHidden="True"/>
+            <Label x:Name="Lock1" Content="" HorizontalAlignment="Left" Margin="78,68,0,0" VerticalAlignment="Top" Height="32" Width="38" d:IsHidden="True"/>
+            <Label x:Name="Lock" Content="" HorizontalAlignment="Left" Margin="78,18,0,0" VerticalAlignment="Top" Height="32" Width="38" d:IsHidden="True"/>
+            <Label x:Name="Lock4" Content="" HorizontalAlignment="Left" Margin="78,218,0,0" VerticalAlignment="Top" Height="32" Width="38" d:IsHidden="True"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="274" Margin="814,440,0,0" VerticalAlignment="Top" Width="193" Background="#66D6DCFF">
+            <Label x:Name="NameSpell6" Content="Магический щит" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Height="43" Width="163"  VerticalContentAlignment="Bottom" FontFamily="Times New Roman" FontSize="15" Foreground="#FF0A0047" Background="#96FFFFFF" BorderBrush="Black"/>
+            <Label x:Name="NameSpell7" Content="Спешка" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Height="45" Width="163"  VerticalContentAlignment="Bottom" FontFamily="Times New Roman" FontSize="15" Foreground="#FF0A0047" Background="#96FFFFFF" BorderBrush="Black"/>
+            <Label x:Name="NameSpell8" Content="Магический квадрат" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" Height="45" Width="163"  VerticalContentAlignment="Bottom" FontFamily="Times New Roman" FontSize="15" Foreground="#FF0A0047" Background="#96FFFFFF" BorderBrush="Black"/>
+            <Label x:Name="NameSpell9" Content="Огненный шар" Margin="11,10,0,0" VerticalAlignment="Top" Height="45"  VerticalContentAlignment="Bottom" FontFamily="Times New Roman" FontSize="15" Foreground="#FF0A0047" Background="#96FFFFFF" BorderBrush="Black" HorizontalAlignment="Left" Width="163"/>
+            <Label x:Name="NameSpell10" Content="Магический квадрат" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Height="45" Width="163"  VerticalContentAlignment="Bottom" FontFamily="Times New Roman" FontSize="15" Foreground="#FF0A0047" Background="#96FFFFFF" BorderBrush="Black"/>
+            <Grid x:Name="Spell1Grid1" HorizontalAlignment="Left" Height="25" Margin="25,10,0,0" VerticalAlignment="Top" Width="154">
+                <Label x:Name="BlueManaLab5" Content="" HorizontalAlignment="Left" Margin="125,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/BlueMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="BlueManaText5" Content="10" HorizontalAlignment="Left" Margin="107,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="YellowManaLab5" Content="" HorizontalAlignment="Left" Margin="88,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/YellowMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="YellowManaText5" Content="10" HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="RedManaLab5" Content="" HorizontalAlignment="Left" Margin="53,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/RedMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="RedManaText5" Content="10" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="GreenManaLab5" Content="" HorizontalAlignment="Left" Margin="16,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/GreenMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="GreenManaText5" Content="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-4,0,0,0" Foreground="Red"/>
+            </Grid>
+            <Button x:Name="ClkSpell9" Content="" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" Height="46" Width="163" Background="#00DDDDDD" Click="ClkSpell4_Click"/>
+            <Button x:Name="ClkSpell6" Content="" HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top" Height="46" Width="163" Background="#00DDDDDD" Click="ClkSpell1_Click"/>
+            <Button x:Name="ClkSpell7" Content="" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Height="46" Width="163" Background="#00DDDDDD" Click="ClkSpell2_Click"/>
+            <Button x:Name="ClkSpell8" Content="" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Height="46" Width="163" Background="#00DDDDDD" Click="ClkSpell3_Click"/>
+            <Button x:Name="ClkSpell10" Content="" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Height="46" Width="163" Background="#00DDDDDD" Click="ClkSpell5_Click"/>
+            <Grid x:Name="Spell2Grid1" HorizontalAlignment="Left" Height="25" Margin="25,60,0,0" VerticalAlignment="Top" Width="154">
+                <Label x:Name="BlueManaLab6" Content="" HorizontalAlignment="Left" Margin="125,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/BlueMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="BlueManaText6" Content="10" HorizontalAlignment="Left" Margin="107,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="YellowManaLab6" Content="" HorizontalAlignment="Left" Margin="88,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/YellowMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="YellowManaText6" Content="10" HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="RedManaLab6" Content="" HorizontalAlignment="Left" Margin="53,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/RedMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="RedManaText6" Content="10" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="GreenManaLab6" Content="" HorizontalAlignment="Left" Margin="16,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/GreenMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="GreenManaText6" Content="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-4,0,0,0" Foreground="Red"/>
+            </Grid>
+            <Grid x:Name="Spell3Grid1" HorizontalAlignment="Left" Height="25" Margin="25,110,0,0" VerticalAlignment="Top" Width="154">
+                <Label x:Name="BlueManaLab7" Content="" HorizontalAlignment="Left" Margin="125,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/BlueMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="BlueManaText7" Content="10" HorizontalAlignment="Left" Margin="107,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="YellowManaLab7" Content="" HorizontalAlignment="Left" Margin="88,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/YellowMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="YellowManaText7" Content="10" HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="RedManaLab7" Content="" HorizontalAlignment="Left" Margin="53,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/RedMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="RedManaText7" Content="10" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="GreenManaLab7" Content="" HorizontalAlignment="Left" Margin="16,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/GreenMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="GreenManaText7" Content="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-4,0,0,0" Foreground="Red"/>
+            </Grid>
+            <Grid x:Name="Spell4Grid1" HorizontalAlignment="Left" Height="25" Margin="25,161,0,0" VerticalAlignment="Top" Width="154">
+                <Label x:Name="BlueManaLab8" Content="" HorizontalAlignment="Left" Margin="125,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/BlueMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="BlueManaText8" Content="10" HorizontalAlignment="Left" Margin="107,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="YellowManaLab8" Content="" HorizontalAlignment="Left" Margin="88,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/YellowMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="YellowManaText8" Content="10" HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="RedManaLab8" Content="" HorizontalAlignment="Left" Margin="53,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/RedMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="RedManaText8" Content="10" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="GreenManaLab8" Content="" HorizontalAlignment="Left" Margin="16,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/GreenMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="GreenManaText8" Content="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-4,0,0,0" Foreground="Red"/>
+            </Grid>
+            <Grid x:Name="Spell5Grid1" HorizontalAlignment="Left" Height="25" Margin="25,211,0,0" VerticalAlignment="Top" Width="154">
+                <Label x:Name="BlueManaLab9" Content="" HorizontalAlignment="Left" Margin="125,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/BlueMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="BlueManaText9" Content="10" HorizontalAlignment="Left" Margin="107,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="YellowManaLab9" Content="" HorizontalAlignment="Left" Margin="88,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/YellowMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="YellowManaText9" Content="10" HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="RedManaLab9" Content="" HorizontalAlignment="Left" Margin="53,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/RedMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="RedManaText9" Content="10" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                <Label x:Name="GreenManaLab9" Content="" HorizontalAlignment="Left" Margin="16,3,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="1.425,0.575">
+                    <Label.Background>
+                        <ImageBrush ImageSource="Resources/GreenMana.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="GreenManaText9" Content="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-4,0,0,0" Foreground="Red"/>
+            </Grid>
+        </Grid>
+    </Canvas>
+</Window>
